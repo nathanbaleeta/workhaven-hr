@@ -1,22 +1,17 @@
 package com.workhavenhr.coreservice.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "app_user")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public abstract class User {
 
     @Id

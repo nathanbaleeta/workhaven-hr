@@ -7,16 +7,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+
 import static org.mockito.Mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.ExpectedCount.times;
 
 @ExtendWith(MockitoExtension.class)
 public class ContractorServiceImplTest {
@@ -66,7 +67,7 @@ public class ContractorServiceImplTest {
         assertEquals(60, savedContractor.getContractDurationDays());
 
         // Verify interactions
-        verify(contractorRepository).save(contractor); // Optional but recommended
+        verify(contractorRepository, times(1)).save(contractor); // Optional but recommended
     }
 
     // ---------------------------------------- Test 2 -----------------------------------------------------
@@ -82,7 +83,40 @@ public class ContractorServiceImplTest {
         assertNotNull(foundContractor);
         assertEquals(1L, foundContractor.get().getId());
 
-        verify(contractorRepository).findById(1L);
+        // Verify interactions
+        verify(contractorRepository, times(1)).findById(1L);
+    }
+
+    // ---------------------------------------- Test 3 -----------------------------------------------------
+    @Test
+    void getAllContractors_Success() {
+        Contractor contractor1 = new Contractor();
+        contractor1.setId(1L);
+
+        // User-generic fields
+        contractor1.setFirstName("Tom");
+        contractor1.setLastName("Justin");
+        contractor1.setEmail("tom.justin@example.com");
+        contractor1.setDob(LocalDate.of(1990, 5, 15));
+        contractor1.setPhoneNUmber("+256712345678");
+        contractor1.setNin("CM90001234ABCF");
+        contractor1.setPassword("securePassword123");
+
+        // Contractor-specific fields
+        contractor1.setDailyRate(100.0);
+        contractor1.setContractDurationDays(30);
+
+        // Arrange
+        when(contractorRepository.findAll()).thenReturn(List.of(contractor, contractor1));
+
+        // Act
+        List<Contractor> contractors = contractorServiceImpl.getAllContractors();
+
+        // Assert
+        assertEquals(2, contractors.size());
+
+        // Verify interactions
+        verify(contractorRepository, times(1)).findAll();
     }
 
 }

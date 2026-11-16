@@ -4,18 +4,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+import lombok.*;
+
 
 @Entity
 @Table (name = "contractors")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @PrimaryKeyJoinColumn(name = "user_id")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Contractor extends User {
 
     @Column(name = "daily_rate", nullable = false)
@@ -23,4 +19,5 @@ public class Contractor extends User {
 
     @Column(name = "contract_duration_days", nullable = false)
     private Integer contractDurationDays;
+
 }
