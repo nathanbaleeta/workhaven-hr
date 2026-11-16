@@ -14,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Contractor extends User {
 
