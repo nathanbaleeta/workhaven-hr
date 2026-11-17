@@ -20,13 +20,16 @@ public class UserController {
 
     private final UserRepository userRepository;
     private final FullTimeEmployeeRepository fullTimeEmployeeRepository;
+    private ContractorRepository contractorRepository;
 
     private final ContractorService contractorService;
 
+    // Get all employees (Polymorphic: returns Full-Time & Contractors)
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
 
     @GetMapping("/full-time")
     public List<FullTimeEmployee> getAllFullTimeEmployees() {
@@ -39,16 +42,17 @@ public class UserController {
         return contractorService.getAllContractors();
     }
 
+    // Add a Full-Time Employee
     @PostMapping("/full-time")
     public ResponseEntity<FullTimeEmployee> createFullTimeEmployee(@RequestBody FullTimeEmployee fullTimeEmployee) {
         FullTimeEmployee saved = fullTimeEmployeeRepository.save(fullTimeEmployee);
         return ResponseEntity.ok(saved);
     }
 
-    /*
+    // Add a Contractor
     @PostMapping("/contractors")
     public ResponseEntity<Contractor> createContractor(@RequestBody Contractor contractor) {
         Contractor saved = contractorRepository.save(contractor);
         return ResponseEntity.ok(saved);
-    }*/
+    }
 }
