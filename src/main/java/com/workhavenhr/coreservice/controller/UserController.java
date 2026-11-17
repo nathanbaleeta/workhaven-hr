@@ -7,6 +7,8 @@ import com.workhavenhr.coreservice.repository.ContractorRepository;
 import com.workhavenhr.coreservice.repository.FullTimeEmployeeRepository;
 import com.workhavenhr.coreservice.repository.UserRepository;
 import com.workhavenhr.coreservice.service.ContractorService;
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +54,7 @@ public class UserController {
 
     // Add a Contractor
     @PostMapping("/contractors")
-    public ResponseEntity<Contractor> createContractor(@RequestBody Contractor contractor) {
+    public ResponseEntity<Contractor> createContractor(@Valid @RequestBody Contractor contractor) {
         Contractor saved = contractorRepository.save(contractor);
         return ResponseEntity.ok(saved);
     }
@@ -60,7 +62,7 @@ public class UserController {
     // Update a Contractor
     @PutMapping("/{id}")
     public ResponseEntity<Contractor> updateContractor(@PathVariable(value = "id") Long contractorId,
-                                                    @RequestBody Contractor contractorDetails) {
+                                                    @Valid @RequestBody Contractor contractorDetails) {
         Optional<Contractor> optionalContractor = contractorService.updateContractor(contractorId, contractorDetails);
         if (optionalContractor.isPresent()) {
             return ResponseEntity.ok(optionalContractor.get());
