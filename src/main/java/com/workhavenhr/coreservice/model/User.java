@@ -29,7 +29,7 @@ public abstract class User {
     private LocalDate dob;
 
     @Column(name = "phone_number")
-    private String phoneNUmber;
+    private String phoneNumber;
 
     @Column(name = "nin")
     private String nin;

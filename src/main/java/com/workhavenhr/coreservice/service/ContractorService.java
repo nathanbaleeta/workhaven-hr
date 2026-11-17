@@ -12,8 +12,8 @@ public interface ContractorService {
 
     Contractor createContractor(Contractor contractor);
 
-    //Optional<Contractor> updateContractor(Long contractorId, Contractor contractorDetails);
+    Optional<Contractor> updateContractor(Long contractorId, Contractor contractorDetails);
 
-    //boolean deleteContractor(Long contractorId);
+    boolean deleteContractor(Long contractorId);
 
 }

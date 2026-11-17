@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -54,5 +55,28 @@ public class UserController {
     public ResponseEntity<Contractor> createContractor(@RequestBody Contractor contractor) {
         Contractor saved = contractorRepository.save(contractor);
         return ResponseEntity.ok(saved);
+    }
+
+    // Update a Contractor
+    @PutMapping("/{id}")
+    public ResponseEntity<Contractor> updateContractor(@PathVariable(value = "id") Long contractorId,
+                                                    @RequestBody Contractor contractorDetails) {
+        Optional<Contractor> optionalContractor = contractorService.updateContractor(contractorId, contractorDetails);
+        if (optionalContractor.isPresent()) {
+            return ResponseEntity.ok(optionalContractor.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // Delete a Contractor
+    @DeleteMapping("/{id}")
+    public String deleteContractor(@PathVariable(value = "id") Long contractorId) {
+        boolean deleted = contractorService.deleteContractor(contractorId);
+        if (deleted) {
+            return "Contractor deleted successfully.";
+        } else {
+            return "Contractor not found or could not be deleted.";
+        }
     }
 }

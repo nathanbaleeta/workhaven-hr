@@ -40,7 +40,7 @@ public class ContractorServiceImplTest {
         contractor.setLastName("Smith");
         contractor.setEmail("jane.smith@example.com");
         contractor.setDob(LocalDate.of(1990, 5, 15));
-        contractor.setPhoneNUmber("+256700000000");
+        contractor.setPhoneNumber("+256700000000");
         contractor.setNin("CM90001234ABCD");
         contractor.setPassword("securePassword123");
 
@@ -98,7 +98,7 @@ public class ContractorServiceImplTest {
         contractor1.setLastName("Justin");
         contractor1.setEmail("tom.justin@example.com");
         contractor1.setDob(LocalDate.of(1990, 5, 15));
-        contractor1.setPhoneNUmber("+256712345678");
+        contractor1.setPhoneNumber("+256712345678");
         contractor1.setNin("CM90001234ABCF");
         contractor1.setPassword("securePassword123");
 
