@@ -1,6 +1,6 @@
 package com.workhavenhr.coreservice.service;
 
-import com.workhavenhr.coreservice.model.Contractor;
+import com.workhavenhr.coreservice.model.entity.Contractor;
 import com.workhavenhr.coreservice.repository.ContractorRepository;
 import com.workhavenhr.coreservice.service.impl.ContractorServiceImpl;
 import org.junit.jupiter.api.BeforeEach;

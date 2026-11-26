@@ -1,8 +1,8 @@
 package com.workhavenhr.coreservice.controller;
 
-import com.workhavenhr.coreservice.model.Contractor;
-import com.workhavenhr.coreservice.model.FullTimeEmployee;
-import com.workhavenhr.coreservice.model.User;
+import com.workhavenhr.coreservice.model.entity.Contractor;
+import com.workhavenhr.coreservice.model.entity.FullTimeEmployee;
+import com.workhavenhr.coreservice.model.entity.User;
 import com.workhavenhr.coreservice.repository.ContractorRepository;
 import com.workhavenhr.coreservice.repository.FullTimeEmployeeRepository;
 import com.workhavenhr.coreservice.repository.UserRepository;

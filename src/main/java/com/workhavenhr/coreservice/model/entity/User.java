@@ -1,4 +1,4 @@
-package com.workhavenhr.coreservice.model;
+package com.workhavenhr.coreservice.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

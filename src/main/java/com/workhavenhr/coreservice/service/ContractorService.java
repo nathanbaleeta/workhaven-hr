@@ -1,6 +1,6 @@
 package com.workhavenhr.coreservice.service;
 
-import com.workhavenhr.coreservice.model.Contractor;
+import com.workhavenhr.coreservice.model.entity.Contractor;
 
 import java.util.List;
 import java.util.Optional;
