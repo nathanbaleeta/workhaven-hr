@@ -1,7 +1,8 @@
-package com.workhavenhr.coreservice.service;
+package com.workhavenhr.coreservice.service.impl;
 
 import com.workhavenhr.coreservice.model.Contractor;
 import com.workhavenhr.coreservice.repository.ContractorRepository;
+import com.workhavenhr.coreservice.service.ContractorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
